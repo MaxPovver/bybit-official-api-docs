@@ -9,17 +9,81 @@
 
 <a href="https://www.bybit.com/app/user/api-management">https://www.bybit.com/app/user/api-management</a>
 
-### 频率限制
+### <span id="rest-rate-limit">频率限制</span>
 
-* 接口访问类限制
-  * 对于订单类接口，如创建委托单、查询委托单等，每个账户每分钟可调用80次
-  * 对于持仓类接口，如修改杠杆、查询仓位信息等，每个账户每分钟可调用60次
+#### 接口访问类限制
+> 频率限制精确到毫秒
+##### 如何查看你的频率限制
+每个接口，都会返回如下字段：
+```
+"rate_limit_status":119,
+"rate_limit_reset_ms":1572114055663815,
+"rate_limit":120
+```
+rate_limit 你当前的频率限制； rate_limit_status 剩余请求次数；rate_limit_reset_ms 重置你请求限制的时间戳，如果未超过频率限制返回当前时间戳，单位是毫秒。
 
-* 业务类限制
+##### 接口频率限制详细
+
+  <escape>
+    <table>
+      <tr>
+        <th>limit</th>
+        <th>path</th>
+      </tr>
+      <tr>
+        <td rowspan="6">100/min</td>
+        <td>open-api/order/create </td>
+      </tr>
+      <tr><td>open-api/order/cancel       </td></tr>
+      <tr><td>open-api/stop-order/create  </td></tr>
+      <tr><td>open-api/stop-order/cancel  </td></tr>
+      <tr><td>open-api/order/replace      </td></tr>
+      <tr><td>open-api/stop-order/replace </td></tr>
+      <tr>
+        <td rowspan="3">600/min</td>
+        <td>open-api/order/list </td>
+      </tr>
+	    <tr><td>open-api/stop-order/list </td></tr>
+      <tr><td>v2/private/order </td></tr>
+      <tr>
+        <td>120/min</td>
+        <td>v2/private/execution/list</td>
+      </tr>
+      <tr>
+        <td rowspan="3">75/min</td>
+        <td>leverage/save  </td>
+      </tr>
+      <tr><td>position/change-position-margin </td></tr>
+      <tr><td>position/trading-stop           </td></tr>
+      <tr>
+        <td rowspan="2">120/min</td>
+        <td>position/list  </td>
+      </tr>
+      <tr><td>user/leverage</td></tr>
+      <tr>
+        <td rowspan="3">120/min</td>
+        <td>open-api/funding/prev-funding-rate  </td>
+      </tr>
+      <tr><td>open-api/funding/prev-funding      </td></tr>
+      <tr><td>open-api/funding/predicted-funding </td></tr>
+      <tr>
+        <td rowspan="2">120/min</td>
+        <td>open-api/wallet/fund/records  </td>
+      </tr>
+	  <tr><td>open-api/wallet/withdraw/list </td></tr>
+    <tr>
+        <td rowspan="1">600/min</td>
+        <td>open-api/api-key  </td>
+      </tr>
+    </table>
+  </escape>
+
+
+#### 业务类限制
   * 未完全成交的活动委托单最多可同时有200个
   * 条件单同一方向最多可同时有5个
 
-* 如何提高频率限制
+#### 如何提高频率限制
   * 请发申请邮件到 api@bybit.com, 我们会在3-5个工作日内给您答复
 
 ### 认证

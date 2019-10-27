@@ -1,5 +1,11 @@
 <hr>
-
+## 2019-10-30
+### rest api
+- [update rest api rate limit](./rest_api_sign.md#rest-rate-limit)[update]
+	- The rate limit is accurate to milliseconds
+	- Refine the rate limit of the endpoints
+	- add new response fields: rate_limit_reset_ms、rate_limit
+<hr>
 ## 2019-10-22
 
 ### REST API

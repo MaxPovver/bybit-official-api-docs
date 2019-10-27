@@ -14,15 +14,79 @@
 
 ### Limits
 
-* API Request Rate Limits
-    * For order related API, such as *'place active order'*, *'get active order'*, the rate limit for each account is 80 requests per minute.
-    * For position related API, such as *'leverage adjustment'*, *'get position'*, the rate limit for each account is 60 requests per minute.
+#### API Request Rate Limits
+#### 接口访问类限制
+> The rate limit is accurate to milliseconds
+##### Viewing Your Request Rate Limit
+On each request to the API, these fields are return：
+```
+"rate_limit_status":119,
+"rate_limit_reset_ms":1572114055663815,
+"rate_limit":120
+```
+rate_limit you current limit; rate_limit_status remaining requests; rate_limit_reset_ms the timestamp reset you request limit, If you have not exceeded your limit, this value is always the current timestamp，the timestamp unit is millisecond.
 
-* Order Count Limits
+##### 接口频率限制详细
+
+  <escape>
+    <table>
+      <tr>
+        <th>limit</th>
+        <th>path</th>
+      </tr>
+      <tr>
+        <td rowspan="6">100/min</td>
+        <td>open-api/order/create </td>
+      </tr>
+      <tr><td>open-api/order/cancel       </td></tr>
+      <tr><td>open-api/stop-order/create  </td></tr>
+      <tr><td>open-api/stop-order/cancel  </td></tr>
+      <tr><td>open-api/order/replace      </td></tr>
+      <tr><td>open-api/stop-order/replace </td></tr>
+      <tr>
+        <td rowspan="3">600/min</td>
+        <td>open-api/order/list </td>
+      </tr>
+	    <tr><td>open-api/stop-order/list </td></tr>
+      <tr><td>v2/private/order </td></tr>
+      <tr>
+        <td>120/min</td>
+        <td>v2/private/execution/list</td>
+      </tr>
+      <tr>
+        <td rowspan="3">75/min</td>
+        <td>leverage/save  </td>
+      </tr>
+      <tr><td>position/change-position-margin </td></tr>
+      <tr><td>position/trading-stop           </td></tr>
+      <tr>
+        <td rowspan="2">120/min</td>
+        <td>position/list  </td>
+      </tr>
+      <tr><td>user/leverage</td></tr>
+      <tr>
+        <td rowspan="3">120/min</td>
+        <td>open-api/funding/prev-funding-rate  </td>
+      </tr>
+      <tr><td>open-api/funding/prev-funding      </td></tr>
+      <tr><td>open-api/funding/predicted-funding </td></tr>
+      <tr>
+        <td rowspan="2">120/min</td>
+        <td>open-api/wallet/fund/records  </td>
+      </tr>
+	  <tr><td>open-api/wallet/withdraw/list </td></tr>
+    <tr>
+        <td rowspan="1">600/min</td>
+        <td>open-api/api-key  </td>
+      </tr>
+    </table>
+  </escape>
+
+#### Order Count Limits
     * Each account can hold up to 200 active orders yet to be filled entirely simultaneously.
     * Each account can hold up to 5 conditional orders in the same side simultaneously.
 
-* How To Raised API Limit Threshold
+#### How To Raised API Limit Threshold
     * Please send application email to api@bybit.com, We will reply in 3-5 working days.
 
 ### Authentication
