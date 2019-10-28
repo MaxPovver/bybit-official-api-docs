@@ -15,7 +15,6 @@
 ### Limits
 
 #### API Request Rate Limits
-#### 接口访问类限制
 > The rate limit is accurate to milliseconds
 ##### Viewing Your Request Rate Limit
 On each request to the API, these fields are return：
@@ -24,9 +23,11 @@ On each request to the API, these fields are return：
 "rate_limit_reset_ms":1572114055663815,
 "rate_limit":120
 ```
-rate_limit you current limit; rate_limit_status remaining requests; rate_limit_reset_ms the timestamp reset you request limit, If you have not exceeded your limit, this value is always the current timestamp，the timestamp unit is millisecond.
+* rate_limit you current limit; 
+* rate_limit_status remaining requests; 
+* rate_limit_reset_ms the timestamp reset you request limit, If you have not exceeded your limit, this value is always the current timestamp，the timestamp unit is millisecond.
 
-##### 接口频率限制详细
+##### endpoints rate limit details
 
   <escape>
     <table>

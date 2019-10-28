@@ -20,7 +20,9 @@
 "rate_limit_reset_ms":1572114055663815,
 "rate_limit":120
 ```
-rate_limit 你当前的频率限制； rate_limit_status 剩余请求次数；rate_limit_reset_ms 重置你请求限制的时间戳，如果未超过频率限制返回当前时间戳，单位是毫秒。
+* rate_limit 你当前的频率限制；
+* rate_limit_status 剩余请求次数；
+* rate_limit_reset_ms 重置你请求限制的时间戳，如果未超过频率限制返回当前时间戳，单位是毫秒。
 
 ##### 接口频率限制详细
 
